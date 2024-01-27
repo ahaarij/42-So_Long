@@ -4,7 +4,13 @@
 int	key_press(int keycode, void *param)
 {
 	(void)param;
-	printf("%d was pressed!\n", keycode);
+	if (keycode == 53)
+	{
+		printf("%d was pressed!\n", keycode);
+		exit (0);
+	}
+	else
+		printf("%d was pressed!\n", keycode);
 	return (0);
 }
 
@@ -31,13 +37,13 @@ int	closegame(void *param)
 	exit(0);
 }
 
-int	esckey(int keycode, void *param)
-{
-	(void)param;
-	if (keycode == 53)
-		exit(0);
-	return (0);
-}
+// int	esckey(int keycode, void *param)
+// {
+// 	(void)param;
+// 	if (keycode == 53)
+// 		exit(0);
+// 	return (0);
+// }
 
 
 int	main()
@@ -68,7 +74,7 @@ int	main()
 	mlx_hook(window, 6, 1L << 6, mouse_position, NULL);
 	mlx_mouse_hook(window, mouse_click, NULL);
 	mlx_hook(window, 17, 1L << 2, closegame, NULL);
-	mlx_hook(window, 3, 1L << 0, esckey, NULL);
+	// mlx_hook(window, 3, 1L << 0, esckey, NULL);
 
 
 	mlx_loop(mlx);

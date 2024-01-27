@@ -27,7 +27,7 @@ NAME		= so_long
 RM			= rm -f
 GCC			= gcc
 CFLAGS 		= -Wall -Wextra -Werror
-CFLAGS		+= -g3 -fsanitize=address
+# CFLAGS		+= -g3 -fsanitize=address
 
 HEADER_FILE	= $(HEAD)/so_long.h
 
