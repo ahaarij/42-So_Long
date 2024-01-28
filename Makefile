@@ -1,6 +1,7 @@
 SRCS_DIR	= 	./sources
 
 SRCS_FILES	=	a.c \
+				images.c \
 
 SRCS		= $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 

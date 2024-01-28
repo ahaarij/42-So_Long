@@ -3,9 +3,9 @@
 #include <math.h>
 
 
-int	key_press(int keycode, t_vars *vars)
+int	key_press(int keycode, t_game *game)
 {
-	vars->player.mem = 0;
+	game->player.mem = 0;
 	if (keycode == 53)
 	{
 		printf("%d was pressed!\n", keycode);
@@ -13,8 +13,8 @@ int	key_press(int keycode, t_vars *vars)
 	}
 	if (keycode == 1)
 	{
-		vars->player.mem = down;
-		mlx_put_image_to_window(vars->mlx, vars->win, vars-player.ptr, vars->player.x, vars->player.y)
+		game->player.mem = down;
+		mlx_put_image_to_window(game->mlx, game->win, game->player.ptr, game->player.x, game->player.y + 10);
 	}
 	else
 		printf("%d was pressed!\n", keycode);
@@ -46,51 +46,64 @@ int	closegame(void *param)
 
 int	main()
 {
+	t_game game;
+	init_game(&game);
+	return (0);
+}
+void	init_game(t_game *game)
+{
+	init_window(game);
+	init_images(game);
+	mlx_hook(game->mlx, 2, 1L >> 0, key_press, &game);
+	mlx_loop(game->mlx);
+}
+
+
+
+// int	main()
+//{
 	// void	*window;
 	// void	*mlx;
 	// int		height;
 	// int		width;
-	int		frame;
     // void    *player;
     // void    *zameen;
-    t_vars  *vars;
+//     t_game  *game = NULL;
 
-	frame = 1;
+// 	game->plot.height = 800;
+// 	game->plot.width = 600;
+// 	game->mlx = mlx_init();
 
-	vars->height = 800;
-	vars->width = 600;
-	vars->mlx = mlx_init();
+//     game->player.x = 100;
+//     game->player.y = 100;
+// 	game->win = mlx_new_window(game->mlx, 800, 600, "Test");
 
-    vars->x = 100;
-    vars->y = 100;
-	vars->win = mlx_new_window(vars->mlx, 800, 600, "Test");
+//     game->player.ptr = mlx_xpm_file_to_image(game->mlx, SLIME, &game->plot.height, &game->plot.width);
+//     // zameen = mlx_xpm_file_to_image(mlx, FLOOR, &height, &width);
 
-    vars->player = mlx_xpm_file_to_image(vars->mlx, IDLEFRAME1, &vars->height, &vars->width);
-    // zameen = mlx_xpm_file_to_image(mlx, FLOOR, &height, &width);
+//     // zameen = mlx_new_image(mlx, 400, 300);
+//     // mlx_put_image_to_window(mlx, window, zameen, 200, 200);
+//     mlx_put_image_to_window(game->mlx, game->win, game->player.ptr, game->player.x, game->player.y);
+// 	// width = SPRITE_SIZE;
+// 	// height = SPRITE_SIZE;
+//     mlx_string_put(game->mlx, game->win, 400, 300, 0xFF0000, "Hello!");
 
-    // zameen = mlx_new_image(mlx, 400, 300);
-    // mlx_put_image_to_window(mlx, window, zameen, 200, 200);
-    mlx_put_image_to_window(vars->mlx, vars->win, vars->player->ptr, vars->x, vars->y);
-	// width = SPRITE_SIZE;
-	// height = SPRITE_SIZE;
-    mlx_string_put(vars->mlx, vars->win, 400, 300, 0xFF0000, "Hello!");
+//     // mlx_destroy_image(mlx, zameen);
 
-    // mlx_destroy_image(mlx, zameen);
+//     // mlx_loop_hook(vars.win, move, &vars);
 
-    // mlx_loop_hook(vars.win, move, &vars);
+// 	mlx_hook(game->win, 2, 1L << 0, key_press, &game);
+// 	mlx_hook(game->win, 6, 1L << 6, mouse_position, NULL);
+// 	mlx_mouse_hook(game->win, mouse_click, NULL);
+// 	mlx_hook(game->win, 17, 1L << 2, closegame, NULL);
 
-	mlx_hook(vars->win, 2, 1L << 0, key_press, &vars);
-	mlx_hook(vars->win, 6, 1L << 6, mouse_position, NULL);
-	mlx_mouse_hook(vars->win, mouse_click, NULL);
-	mlx_hook(vars->win, 17, 1L << 2, closegame, NULL);
+// 	mlx_loop(game->mlx);
+// 	return (0);
 
-	mlx_loop(vars->mlx);
-	return (0);
-
-	// 37 51 most frames
-	// 37 50 fourth frame
-	// 37 52 eighth frame
-}
+// 	// 37 51 most frames
+// 	// 37 50 fourth frame
+// 	// 37 52 eighth frame
+// }
 
 
 // int	main()

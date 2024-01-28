@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:45:14 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/01/27 16:25:47 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/01/28 14:38:30 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,32 @@ enum e_direction
 typedef struct s_img {
 	void	*ptr;
 	int		mem;
+	int		x;
+    int		y;
 }				t_img;
 
-typedef struct	s_vars {
+typedef struct s_draw {
+	char	**map;
+	int		height;
+	int		width;
+}				t_draw;
+
+
+typedef struct	s_game {
 	void	*mlx;
 	void	*win;
-    int     height;
-    int     width;
+	t_draw	plot;
     t_img   player;
-    int     x;
-    int     y;
-}				t_vars;
+	t_img	back;
+}				t_game;
 
 # define SPRITE_SIZE 512
 # define OFFSET_S	1
 # define NUM_FRAMES 8
+
+void	init_window(t_game *game);
+void	init_images(t_game *game);
+t_img	xpmtemp(void *mlx, char *path);
+void	init_game(t_game *game);
 
 #endif
