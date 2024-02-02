@@ -18,7 +18,7 @@ int	key_press(int keycode, t_game *game)
 	}
 	else
 		printf("%d was pressed!\n", keycode);
-	return (keycode);
+	return (0);
 }
 
 int	mouse_position(int x, int y, void *param)
@@ -54,7 +54,10 @@ void	init_game(t_game *game)
 {
 	init_window(game);
 	init_images(game);
-	mlx_hook(game->mlx, 2, 1L >> 0, key_press, &game);
+	mlx_hook(game->win, 2, 1L << 0, key_press, &game);
+	mlx_hook(game->win, 6, 1L << 6, mouse_position, NULL);
+	mlx_mouse_hook(game->win, mouse_click, NULL);
+	mlx_hook(game->win, 17, 1L << 2, closegame, NULL);
 	mlx_loop(game->mlx);
 }
 

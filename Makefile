@@ -16,7 +16,7 @@ HEAD		= ./includes
 LIBFT_DIR	= ./libft
 LIBFT_PATH	= $(LIBFT_DIR)/libft.a
 
-MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework Cocoa -framework OpenGL -framework AppKit
+MLX_FLAGS = -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
 MLX_DIR = ./mlx-macos
 MLX_PATH = $(MLX_DIR)/libmlx.a
 
