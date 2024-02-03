@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:45:14 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/01/28 14:38:30 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/03 12:43:41 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,43 +21,35 @@
 
 // Define Sizes
 
-enum e_direction
-{
-	down,
-	left,
-	right,
-	up,
-};
-
-typedef struct s_img {
-	void	*ptr;
-	int		mem;
-	int		x;
-    int		y;
-}				t_img;
-
-typedef struct s_draw {
-	char	**map;
-	int		height;
-	int		width;
-}				t_draw;
-
-
 typedef struct	s_game {
 	void	*mlx;
 	void	*win;
-	t_draw	plot;
-    t_img   player;
-	t_img	back;
+	void	*img;
+	char	**map;
+	int		p_x;
+	int		p_y;
+	int		win_h;
+	int		win_w;
 }				t_game;
+
+typedef struct	s_map {
+	int		c;
+	int		e;
+	int		p;
+	int		x;
+	int		y;
+}				t_map;
 
 # define SPRITE_SIZE 512
 # define OFFSET_S	1
 # define NUM_FRAMES 8
 
-void	init_window(t_game *game);
-void	init_images(t_game *game);
-t_img	xpmtemp(void *mlx, char *path);
-void	init_game(t_game *game);
+void		init_game(t_game *game);
+void		move_down(t_game **game);
+static int	needle(char *str, char *to_find);
+void		check_file_is_valid(char *file_line);
+void		ft_msgerror(void);
+int			get_height(char **map);
+char		**get_map(char *fmap);
 
 #endif

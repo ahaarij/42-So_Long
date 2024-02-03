@@ -2,6 +2,9 @@ SRCS_DIR	= 	./sources
 
 SRCS_FILES	=	a.c \
 				images.c \
+				movement.c \
+				checkfile.c \
+				ft_getmap.c \
 
 SRCS		= $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 
@@ -28,7 +31,7 @@ NAME		= so_long
 RM			= rm -f
 GCC			= gcc
 CFLAGS 		= -Wall -Wextra -Werror
-CFLAGS		+= -g3 -fsanitize=address
+# CFLAGS		+= -g3 -fsanitize=address
 
 HEADER_FILE	= $(HEAD)/so_long.h
 
