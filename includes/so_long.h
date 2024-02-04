@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+x/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
@@ -19,7 +19,16 @@
 # include "../libft/includes/libft.h"
 # include "sprites.h"
 
-// Define Sizes
+typedef	struct	s_enemy {
+	int		x_e;
+	int		y_e;
+	int		sign;
+	int		x;
+	int		path_to_move;
+	int		sleep;
+	int		sleep_for_move;
+	char	*imgs[5];
+}				t_enemy;
 
 typedef struct	s_game {
 	void	*mlx;
@@ -30,6 +39,9 @@ typedef struct	s_game {
 	int		p_y;
 	int		win_h;
 	int		win_w;
+	int		collect;
+	int		movement;
+	t_enemy	e_vars;
 }				t_game;
 
 typedef struct	s_map {
@@ -46,10 +58,15 @@ typedef struct	s_map {
 
 void		init_game(t_game *game);
 void		move_down(t_game **game);
-static int	needle(char *str, char *to_find);
+int			needle(char *str, char *to_find);
 void		check_file_is_valid(char *file_line);
 void		ft_msgerror(void);
 int			get_height(char **map);
 char		**get_map(char *fmap);
+void		checkmapvalid(t_game *game);
+void		check_walls(t_game **game);
+int			check_line(char *line);
+void		check_is_rectangle(t_game **game);
+void		ft_error(t_game ***game, char *error);
 
 #endif

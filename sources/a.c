@@ -38,6 +38,18 @@ int	closegame(void *param)
 	exit(0);
 }
 
+static void	init_vars(t_game *game)
+{
+	game->collect = 0;
+	game->movement = 0;
+	game->win_w = ft_strlen(game->map[0]);
+	game->win_h = get_height(game->map);
+	game->e_vars.x = 0;
+	game->e_vars.sleep = 5;
+	game->e_vars.sleep_for_move = 60;
+	game->e_vars.path_to_move = 0; 
+}
+
 int	main(int argc, char **argv)
 {
 	t_game game;
@@ -45,15 +57,14 @@ int	main(int argc, char **argv)
 	game.map = get_map(argv[1]);
 	if (game.map != NULL)
 	{
-		init_game(&game);
-		return (0);
+		checkmapvalid(&game);
 	}
 }
-void	init_game(t_game *game)
-{
-	mlx_hook(game->win, 2, 1L << 0, key_press, &game);
-	mlx_hook(game->win, 6, 1L << 6, mouse_position, NULL);
-	mlx_mouse_hook(game->win, mouse_click, NULL);
-	mlx_hook(game->win, 17, 1L << 2, closegame, NULL);
-	mlx_loop(game->mlx);
-}
+// void	init_game(t_game *game)
+// {
+// 	mlx_hook(game->win, 2, 1L << 0, key_press, &game);
+// 	mlx_hook(game->win, 6, 1L << 6, mouse_position, NULL);
+// 	mlx_mouse_hook(game->win, mouse_click, NULL);
+// 	mlx_hook(game->win, 17, 1L << 2, closegame, NULL);
+// 	mlx_loop(game->mlx);
+// }
