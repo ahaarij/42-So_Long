@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:32:02 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/03 14:09:01 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/09 13:00:46 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	ft_error(t_game ***game, char *error)
 	}
 	free((**game)->map);
 	printf("%s", error);
-	exit(1);
+	exit(0);
 }
 
 static void	check_is_rectangle(t_game **game)
@@ -37,7 +37,7 @@ static void	check_is_rectangle(t_game **game)
 	height = get_height((*game)->map);
 	y_map = 0;
 
-	while (y_map != height);
+	while (y_map != height)
 	{
 		x_map = 0;
 		while((*game)->map[y_map][x_map] != '\0')
@@ -67,18 +67,19 @@ static int	check_line(char *line)
 	return (0);
 }
 
-static void	check_walls(t_game **game)
+void	check_walls(t_game **game)
 {
 	char	*error;
 	int		i;
 
-	error = "Map is not closed!";
+	error = "Map is not closed!\n";
 	if (check_line((*game)->map[0]))
 		ft_error(&game, error);
-	i = get_height((*game)->map);
-	while (i)
+	i = get_height((*game)->map) - 1;
+	// printf("%s\n", (*game)->map[i]);
+	while (i >= 0)
 	{
-		if((*game)->map[i][0] != '1' || (*game)->map[i][ft_strlen((*game)->map) - 1] != '1')
+		if ((*game)->map[i][0] != '1' || (*game)->map[i][ft_strlen((*game)->map[i]) - 1] != '1')
 			ft_error(&game, error);
 		i--;
 	}
@@ -90,4 +91,5 @@ void	checkmapvalid(t_game *game)
 {
 	check_is_rectangle(&game);
 	check_walls(&game);
+	checkelement(&game);
 }

@@ -2,18 +2,63 @@
 #include <stdio.h>
 #include <math.h>
 
+void	render_map(t_game *game)
+{
+	int	y1;
+	int	y_map;
+	int	backup_w;
+	int	x1;
+	int	x_map;
+
+	y1 = 0;
+	y_map = 0;
+	backup_w = game->win_w;
+	while (game->win_h > 0)
+	{
+		x1 = 0;
+		x_map = 0;
+		while (game->win_w > 0)
+		{
+			put_image_to_map(game->map[y_map][x_map], x1, y1, &game);
+			x_map++;
+			x1 += 32;
+			game->win_w--;
+		}
+		game->win_w = backup_w;
+		y_map++;
+		y1 += 32;
+		game->win_h--;
+	}
+}
+
 
 int	key_press(int keycode, t_game *game)
 {
+	int	x;
+
+	if (keycode == 2 || keycode == 124)
+		to_right(&game);
+	else if (keycode == 0 || keycode == 123)
+		to_left(&game);
+	else if (keycode == 13 || keycode == 126)
+		to_up(&game);
+	else if (keycode == 1 || keycode == 125)
+		to_down(&game);
 	if (keycode == 53)
 	{
-		printf("%d was pressed!\n", keycode);
-		exit (0);
+		x = 0;
+		while (game->map[x])
+		{
+			free(game->map[x]);
+			x++;
+		}
+		free(game->map);
+		mlx_destroy_window(game->mlx, game->win);
+		exit(1);
 	}
-	else
-		printf("%d was pressed!\n", keycode);
 	return (0);
 }
+
 
 int	mouse_position(int x, int y, void *param)
 {
@@ -32,11 +77,22 @@ int	mouse_click(int keycode, void *param)
 	return (0);
 }
 
-int	closegame(void *param)
+int	closegame(t_game *game)
 {
-	(void)param;
-	exit(0);
+	int	x;
+
+	x = 0;
+	while (game->map[x])
+	{
+		free(game->map[x]);
+		x++;
+	}
+	free(game->map);
+	mlx_destroy_window(game->mlx, game->win);
+	exit(1);
+	return (0);
 }
+
 
 static void	init_vars(t_game *game)
 {
@@ -53,18 +109,25 @@ static void	init_vars(t_game *game)
 int	main(int argc, char **argv)
 {
 	t_game game;
+	if (argc <= 1)
+	{
+		perror("\033[1;31m🛑ERROR \033[0m");
+		exit(1);
+	}
+	// (void)argv;
 	check_file_is_valid(argv[1]);
 	game.map = get_map(argv[1]);
 	if (game.map != NULL)
 	{
 		checkmapvalid(&game);
+		init_vars(&game);
+		game.mlx = mlx_init();
+		game.win = mlx_new_window(game.mlx, game.win_w * 32, game.win_h * 32, "So-Long");
+		render_map(&game);
+		mlx_hook(game.win, 2, 1L << 0, key_press, &game);
+		mlx_hook(game.win, 6, 1L << 6, mouse_position, NULL);
+		mlx_mouse_hook(game.win, mouse_click, NULL);
+		mlx_hook(game.win, 17, 1L << 2, closegame, &game);
+		mlx_loop(game.mlx);
 	}
 }
-// void	init_game(t_game *game)
-// {
-// 	mlx_hook(game->win, 2, 1L << 0, key_press, &game);
-// 	mlx_hook(game->win, 6, 1L << 6, mouse_position, NULL);
-// 	mlx_mouse_hook(game->win, mouse_click, NULL);
-// 	mlx_hook(game->win, 17, 1L << 2, closegame, NULL);
-// 	mlx_loop(game->mlx);
-// }

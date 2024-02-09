@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ahaarij <ahaarij@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 17:02:03 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/01/19 10:25:44 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:36:17 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*string(char *s1)
 	if (s1[i] == '\0')
 		return (free(s1), NULL);
 	i = line_end(s1, i);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) - i + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlengnl(s1) - i + 1));
 	if (!str)
 		return (free(str), NULL);
 	while (s1[i])
@@ -95,7 +95,7 @@ char	*get_next_line(int fd)
 	content = (char *)malloc(sizeof(char) * BUFFER_SIZE + 1);
 	if (!content)
 		return (NULL);
-	while (!(ft_strchr(buffer[fd], '\n')) && bytes != 0)
+	while (!(ft_strchrgnl(buffer[fd], '\n')) && bytes != 0)
 	{
 		bytes = read(fd, content, BUFFER_SIZE);
 		if (bytes == -1)
@@ -104,7 +104,7 @@ char	*get_next_line(int fd)
 			return (NULL);
 		}
 		content[bytes] = '\0';
-		buffer[fd] = ft_strjoin(buffer[fd], content);
+		buffer[fd] = ft_strjoin_gnl(buffer[fd], content);
 	}
 	free (content);
 	content = readline(buffer[fd]);

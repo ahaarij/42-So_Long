@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:31:17 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/03 11:28:47 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/06 22:52:38 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ int		ft_isprint(int c);
 #  define BUFFER_SIZE 42
 # endif
 
-size_t	ft_strlen(const char *s);
-char	*ft_strchr(const char *s, int i);
-char	*ft_strdup(const char *src);
+size_t	ft_strlengnl(const char *s);
+char	*ft_strchrgnl(const char *s, int i);
+char	*ft_strdupgnl(const char *src);
 char	*ft_strjoin_gnl(char *s1, char *s2);
 size_t	line_end(char *str, size_t i);
 char	*string(char *s1);

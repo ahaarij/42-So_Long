@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:27:37 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/03 12:43:21 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/05 15:27:02 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**get_map(char *fmap)
 	all_lines = ft_strdup("");
 	fd = open(fmap, O_RDONLY);
 	if (fd < 0)
-		ft_message_error();
+		ft_msgerror();
 	while (line)
 	{
 		line = get_next_line(fd);
@@ -50,7 +50,7 @@ char	**get_map(char *fmap)
 	free(line);
 	close(fd);
 	if (all_lines[0] == '\0')
-		ft_message_error();
+		ft_msgerror();
 	return (ft_split(all_lines, '\n'));
 }
 
