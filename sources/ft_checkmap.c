@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:32:02 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/09 13:00:46 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:54:53 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static void	check_is_rectangle(t_game **game)
 	int	height;
 	int	backup;
 
+	backup = 0;
 	height = get_height((*game)->map);
 	y_map = 0;
 
@@ -46,7 +47,7 @@ static void	check_is_rectangle(t_game **game)
 		if (backup != 0)
 		{
 			if (backup != x_map)
-				ft_error(&game, "Map is not rectangular");		
+				ft_error(&game, "Map is not rectangular");
 		}
 		else
 			backup = x_map;
@@ -76,7 +77,6 @@ void	check_walls(t_game **game)
 	if (check_line((*game)->map[0]))
 		ft_error(&game, error);
 	i = get_height((*game)->map) - 1;
-	// printf("%s\n", (*game)->map[i]);
 	while (i >= 0)
 	{
 		if ((*game)->map[i][0] != '1' || (*game)->map[i][ft_strlen((*game)->map[i]) - 1] != '1')
@@ -87,9 +87,11 @@ void	check_walls(t_game **game)
 		ft_error(&game, error);
 }
 
-void	checkmapvalid(t_game *game)
+void	checkmapvalid(t_game *game, t_map *map)
 {
 	check_is_rectangle(&game);
 	check_walls(&game);
-	checkelement(&game);
+	checkelement(&game, map);
+	printf("%d\n", map->c);
+	check_valid_path(game, *map);
 }

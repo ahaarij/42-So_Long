@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:45:14 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/08 12:44:53 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:50:14 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include "../mlx-macos/mlx.h"
 # include "../libft/includes/libft.h"
 # include "sprites.h"
+# include <stdbool.h>
 
 typedef	struct	s_enemy {
 	int		x_e;
@@ -45,11 +46,21 @@ typedef struct	s_game {
 }				t_game;
 
 typedef struct	s_map {
+	int		width;
+	int		height;
+	char	*line;
+	char	*file;
+	char	*filename;
+	char	**copy;
 	int		c;
+	int		c_check;
 	int		e;
+	int		e_check;
 	int		p;
 	int		x;
 	int		y;
+	int		map_x;
+	int		map_y;
 }				t_map;
 
 # define SPRITE_SIZE 512
@@ -61,12 +72,12 @@ void			move_down(t_game **game);
 void			check_file_is_valid(char *file_line);
 void			ft_msgerror(void);
 int				get_height(char **map);
-char			**get_map(char *fmap);
-void			checkmapvalid(t_game *game);
+void			get_map(t_map *map, t_game *game);
+void			checkmapvalid(t_game *game, t_map *map);
 void			ft_error(t_game ***game, char *error);
 void    		put_image(t_game ***game, int x, int y, char *path);
 void			put_image_to_map(char p, int x1, int y1, t_game **game);
-void			checkelement(t_game **game);
+void			checkelement(t_game **game, t_map *map);
 void			check_walls(t_game **game);
 void    		to_right(t_game **game);
 void    		to_left(t_game **game);
@@ -74,6 +85,9 @@ void			to_up(t_game **v);
 void			to_down(t_game **v);
 void			put_text(t_game ***game);
 void    		ft_exit(t_game ***game);
-
+void			move_on_paths(int x, int y, t_map *map);
+void			check_valid_path(t_game *game, t_map map);
+char			*ft_strjoinfree(char *s1, char *s2);
+void			scanplayer(t_map *map, t_game game);
 
 #endif

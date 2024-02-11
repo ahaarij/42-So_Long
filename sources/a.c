@@ -54,7 +54,7 @@ int	key_press(int keycode, t_game *game)
 		}
 		free(game->map);
 		mlx_destroy_window(game->mlx, game->win);
-		exit(1);
+		exit(0);
 	}
 	return (0);
 }
@@ -89,7 +89,7 @@ int	closegame(t_game *game)
 	}
 	free(game->map);
 	mlx_destroy_window(game->mlx, game->win);
-	exit(1);
+	exit(0);
 	return (0);
 }
 
@@ -108,19 +108,21 @@ static void	init_vars(t_game *game)
 
 int	main(int argc, char **argv)
 {
-	t_game game;
+	t_game	game;
+	t_map	map;
 	if (argc <= 1)
 	{
 		perror("\033[1;31m🛑ERROR \033[0m");
-		exit(1);
+		exit(0);
 	}
 	// (void)argv;
+	map.filename = argv[1];
 	check_file_is_valid(argv[1]);
-	game.map = get_map(argv[1]);
+	get_map(&map, &game);
 	if (game.map != NULL)
 	{
-		checkmapvalid(&game);
 		init_vars(&game);
+		checkmapvalid(&game, &map);
 		game.mlx = mlx_init();
 		game.win = mlx_new_window(game.mlx, game.win_w * 32, game.win_h * 32, "So-Long");
 		render_map(&game);
@@ -130,4 +132,5 @@ int	main(int argc, char **argv)
 		mlx_hook(game.win, 17, 1L << 2, closegame, &game);
 		mlx_loop(game.mlx);
 	}
+	printf("%s\n", "game.map is null");
 }

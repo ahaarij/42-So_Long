@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:45:33 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/08 14:06:45 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/10 09:18:43 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void	collected(t_game ***game)
 	(**game)->collect--;
 	(**game)->map[((**game)->p_y / 32)][((**game)->p_x / 32)] = '0';
 	(**game)->img = mlx_xpm_file_to_image(
-			(**game)->mlx, "/Users/mac/Desktop/42-So_Long/assets/floor.xpm", &w_img, &h_img);
+			(**game)->mlx, "./assets/floor.xpm", &w_img, &h_img);
 	mlx_put_image_to_window(
 		(**game)->mlx, (**game)->win, (**game)->img, (**game)->p_x, (**game)->p_y);
 }
@@ -31,7 +31,7 @@ void    to_right(t_game **game)
 	int	h_img;
 
 	(*game)->img = mlx_xpm_file_to_image(
-			(*game)->mlx, "/Users/mac/Desktop/42-So_Long/assets/floor.xpm", &w_img, &h_img);
+			(*game)->mlx, "./assets/floor.xpm", &w_img, &h_img);
 	mlx_put_image_to_window(
 		(*game)->mlx, (*game)->win, (*game)->img, (*game)->p_x, (*game)->p_y);
 	if ((*game)->map[((*game)->p_y / 32)][((*game)->p_x / 32) + 1] == 'E')
@@ -58,7 +58,7 @@ void    to_left(t_game **game)
 	int	h_img;
 
 	(*game)->img = mlx_xpm_file_to_image(
-			(*game)->mlx, "/Users/mac/Desktop/42-So_Long/assets/floor.xpm", &w_img, &h_img);
+			(*game)->mlx, "./assets/floor.xpm", &w_img, &h_img);
 	mlx_put_image_to_window(
 		(*game)->mlx, (*game)->win, (*game)->img, (*game)->p_x, (*game)->p_y);
 	if ((*game)->map[((*game)->p_y / 32)][((*game)->p_x / 32) - 1] == 'E')
@@ -74,7 +74,7 @@ void    to_left(t_game **game)
 	if ((*game)->map[((*game)->p_y / 32)][((*game)->p_x / 32)] == 'C')
 		collected(&game);
 	(*game)->img = mlx_xpm_file_to_image(
-			(*game)->mlx, "/Users/mac/Desktop/42-So_Long/assets/slimeleft.xpm", &w_img, &h_img);
+			(*game)->mlx, "./assets/slimeleft.xpm", &w_img, &h_img);
 	mlx_put_image_to_window(
 		(*game)->mlx, (*game)->win, (*game)->img, (*game)->p_x, (*game)->p_y);
 }
@@ -85,7 +85,7 @@ void	to_up(t_game **v)
 	int		h_img;
 
 	(*v)->img = mlx_xpm_file_to_image(
-			(*v)->mlx, "/Users/mac/Desktop/42-So_Long/assets/floor.xpm", &w_img, &h_img);
+			(*v)->mlx, "./assets/floor.xpm", &w_img, &h_img);
 	mlx_put_image_to_window(
 		(*v)->mlx, (*v)->win, (*v)->img, (*v)->p_x, (*v)->p_y);
 	if ((*v)->map[((*v)->p_y / 32) - 1][((*v)->p_x / 32)] == 'E')
@@ -101,7 +101,7 @@ void	to_up(t_game **v)
 	if ((*v)->map[((*v)->p_y / 32)][((*v)->p_x / 32)] == 'C')
 		collected(&v);
 	(*v)->img = mlx_xpm_file_to_image(
-			(*v)->mlx, "/Users/mac/Desktop/42-So_Long/assets/slimeup.xpm", &w_img, &h_img);
+			(*v)->mlx, "./assets/slimeup.xpm", &w_img, &h_img);
 	mlx_put_image_to_window(
 		(*v)->mlx, (*v)->win, (*v)->img, (*v)->p_x, (*v)->p_y);
 }
@@ -112,7 +112,7 @@ void	to_down(t_game **v)
 	int		h_img;
 
 	(*v)->img = mlx_xpm_file_to_image(
-			(*v)->mlx, "/Users/mac/Desktop/42-So_Long/assets/floor.xpm", &w_img, &h_img);
+			(*v)->mlx, "./assets/floor.xpm", &w_img, &h_img);
 	mlx_put_image_to_window(
 		(*v)->mlx, (*v)->win, (*v)->img, (*v)->p_x, (*v)->p_y);
 	if ((*v)->map[((*v)->p_y / 32) + 1][((*v)->p_x / 32)] == 'E')
@@ -128,7 +128,7 @@ void	to_down(t_game **v)
 	if ((*v)->map[((*v)->p_y / 32)][((*v)->p_x / 32)] == 'C')
 		collected(&v);
 	(*v)->img = mlx_xpm_file_to_image(
-			(*v)->mlx, "/Users/mac/Desktop/42-So_Long/assets/slimedown.xpm", &w_img, &h_img);
+			(*v)->mlx, "./assets/slimedown.xpm", &w_img, &h_img);
 	mlx_put_image_to_window(
 		(*v)->mlx, (*v)->win, (*v)->img, (*v)->p_x, (*v)->p_y);
 }

@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:27:37 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/05 15:27:02 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/11 12:55:07 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,46 @@ int	get_height(char **map)
 		i++;
 	return (i);
 }
-
-char	**get_map(char *fmap)
+void	ft_exit_free(t_map *map, t_game *game)
 {
-	char	*line;
-	char	*all_lines;
+	if (game->map)
+		free(game->map);
+	if (map->copy)
+		free(map->copy);
+	if (map->file)
+		free(map->file);
+	if (map->line)
+		free(map->file);
+	exit(0);
+}
+
+void	get_map(t_map *map, t_game *game)
+{
 	int		fd;
 
-	line = "";
-	all_lines = ft_strdup("");
-	fd = open(fmap, O_RDONLY);
-	if (fd < 0)
-		ft_msgerror();
-	while (line)
+	map->y = 0;
+	map->line = "";
+	map->file = NULL;
+	fd = open(map->filename, O_RDONLY);
+	if (fd == -1)
+		printf("Not working\n");
+	while (map->line)
 	{
-		line = get_next_line(fd);
-		if (line == NULL || line[0] == '\n')
+		map->line = get_next_line(fd);
+		if (map->line == NULL)
 			break ;
-		all_lines = ft_strjoin(all_lines, line);
-		free(line);
+		map->file = ft_strjoinfree(map->file, map->line);
+		free(map->line);
+		if (!map->file)
+			ft_exit_free(map, game);
+		map->y++;
 	}
-	free(line);
 	close(fd);
-	if (all_lines[0] == '\0')
-		ft_msgerror();
-	return (ft_split(all_lines, '\n'));
+	game->map = ft_split(map->file, '\n');
+	map->copy = ft_split(map->file, '\n');
+	if (!game->map || !map->copy)
+		ft_exit_free(map, game);
+	free(map->file);
 }
 
 
