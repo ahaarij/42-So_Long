@@ -121,8 +121,8 @@ int	main(int argc, char **argv)
 	get_map(&map, &game);
 	if (game.map != NULL)
 	{
-		init_vars(&game);
 		checkmapvalid(&game, &map);
+		init_vars(&game);
 		game.mlx = mlx_init();
 		game.win = mlx_new_window(game.mlx, game.win_w * 32, game.win_h * 32, "So-Long");
 		render_map(&game);
@@ -130,7 +130,7 @@ int	main(int argc, char **argv)
 		mlx_hook(game.win, 6, 1L << 6, mouse_position, NULL);
 		mlx_mouse_hook(game.win, mouse_click, NULL);
 		mlx_hook(game.win, 17, 1L << 2, closegame, &game);
+		mlx_loop_hook(game.mlx, spriteanimate, &game);
 		mlx_loop(game.mlx);
 	}
-	printf("%s\n", "game.map is null");
 }

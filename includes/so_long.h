@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:45:14 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/11 12:50:14 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/17 16:51:41 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,9 @@ void			move_on_paths(int x, int y, t_map *map);
 void			check_valid_path(t_game *game, t_map map);
 char			*ft_strjoinfree(char *s1, char *s2);
 void			scanplayer(t_map *map, t_game game);
+void			ft_exit_free(t_map *map, t_game *game);
+int				spriteanimate(t_game *game);
+int				get_za_enemy_position(t_game **game);
+void			open_exit(t_game **game);
 
 #endif

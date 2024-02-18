@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:19:44 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/05 15:22:03 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/11 15:09:24 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ void	check_file_is_valid(char *file_line)
 		file_line++;
 	}
 	ft_printf("Error: file is not valid");
-	exit(1);
+	exit(0);
 }

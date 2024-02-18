@@ -2,16 +2,22 @@
 #
 
 RESET		= \033[0m
+RED			= $'\x1b[31m
 GREEN		= \033[32m
 YELLOW		= \033[33m
 
 define HEADER
-███╗░░░███╗██╗░░░░░██╗░░██╗
-████╗░████║██║░░░░░╚██╗██╔╝
-██╔████╔██║██║░░░░░░╚███╔╝░
-██║╚██╔╝██║██║░░░░░░██╔██╗░
-██║░╚═╝░██║███████╗██╔╝╚██╗
-╚═╝░░░░░╚═╝╚══════╝╚═╝░░╚═
+ _____                               _____ 
+( ___ )-----------------------------( ___ )
+ |   |                               |   | 
+ |   | .___  ___.  __      ___   ___ |   | 
+ |   | |   \/   | |  |     \  \ /  / |   | 
+ |   | |  \  /  | |  |      \  V  /  |   | 
+ |   | |  |\/|  | |  |       >   <   |   | 
+ |   | |  |  |  | |  `----. /  .  \  |   | 
+ |   | |__|  |__| |_______|/__/ \__\ |   | 
+ |___|                               |___| 
+(_____)-----------------------------(_____)
 endef
 export HEADER
 
@@ -36,15 +42,15 @@ $(NOM):	$(OBJ)
 	@ranlib $(NOM)
 	@echo ""
 	@echo "$(GREEN)$$HEADER"
-	@echo "Created: $(words $(OBJ)) object file(s) for MLX"
-	@echo "Created: $(NOM)$(RESET)"
+	@echo "$(YELLOW)Created: $(words $(OBJ)) object file(s) for MLX"
+	@echo "$(YELLOW)Created: $(NOM)$(RESET)"
 
 clean:
 	@rm -f $(NOM) $(OBJ) *~
 	@rm -f mlx_app
 	@echo ""
-	@echo "$(YELLOW)$$HEADER"
-	@echo "Removed: $(words $(OBJ)) object file(s) from MLX"
-	@echo "Removed: $(NOM)$(RESET)"
+	@echo "$(RED)$$HEADER"
+	@echo "$(YELLOW)Removed: $(words $(OBJ)) object file(s) from MLX"
+	@echo "$(YELLOW)Removed: $(NOM)$(RESET)"
 
 re: clean all

@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:50:12 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/09 09:26:02 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/17 21:49:28 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void    ft_exit(t_game ***game)
 		free((**game)->map[x]);
 		x++;
 	}
+	printf("You Won!\n");
 	free((**game)->map);
 	mlx_destroy_window((**game)->mlx, (**game)->win);
 	exit(0);

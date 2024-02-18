@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:48 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/09 13:06:11 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/15 20:01:13 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	put_image_to_map(char p, int x1, int y1, t_game **game)
 	}
 	else if (p == 'E')
 	{
-		put_image(&game, x1, y1, "./assets/floor.xpm");
 		put_image(&game, x1, y1, "./assets/exit.xpm");
 	}
 	else if (p == 'P')

@@ -9,6 +9,8 @@ SRCS_FILES	=	a.c \
 				move.c	\
 				text.c	\
 				exit.c	\
+				spriteanimate_utils.c \
+				spriteanimate.c \
 
 SRCS		= $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 
@@ -35,7 +37,7 @@ NAME		= so_long
 RM			= rm -f
 GCC			= gcc
 CFLAGS 		= -Wall -Wextra -Werror
-CFLAGS		+= -g3 -fsanitize=address
+# CFLAGS		+= -g3 -fsanitize=address
 
 HEADER_FILE	= $(HEAD)/so_long.h
 
@@ -53,12 +55,17 @@ CYAN		= $'\x1b[36m
 WHITE		= $'\x1b[37m
 
 define HEADER
-___.   .__       ___.   .__          ___.                 ___.                   
-\_ |__ |__| _____\_ |__ |__| _____   \_ |__ _____    _____\_ |__ _____    _____  
- | __ \|  |/     \| __ \|  |/     \   | __ \\__  \  /     \| __ \\__  \  /     \ 
- | \_\ \  |  Y Y  \ \_\ \  |  Y Y  \  | \_\ \/ __ \|  Y Y  \ \_\ \/ __ \|  Y Y  \
- |___  /__|__|_|  /___  /__|__|_|  /  |___  |____  /__|_|  /___  |____  /__|_|  /
-     \/         \/    \/         \/       \/     \/      \/    \/     \/      \/
+ _____                                                 _____ 
+( ___ )-----------------------------------------------( ___ )
+ |   |                                                 |   | 
+ |   |      _______. __       __  .___  ___.  _______  |   | 
+ |   |     /       ||  |     |  | |   \/   | |   ____| |   | 
+ |   |    |   (----`|  |     |  | |  \  /  | |  |__    |   | 
+ |   |     \   \    |  |     |  | |  |\/|  | |   __|   |   | 
+ |   | .----)   |   |  `----.|  | |  |  |  | |  |____  |   | 
+ |   | |_______/    |_______||__| |__|  |__| |_______| |   | 
+ |___|                                                 |___| 
+(_____)-----------------------------------------------(_____)
 endef
 export HEADER
 
@@ -82,16 +89,16 @@ $(NAME) : $(OBJS) $(LIBFT_PATH) $(MLX_PATH)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_PATH) $(MLX_PATH) $(MLX_FLAGS) -o $(NAME) 
 	@echo ""
 	@echo "${GREEN}$$HEADER"
-	@echo "Created: $(words $(OBJS)) object file(s) for so_long"
-	@echo "Created: $(NAME)$(RESET)"
+	@echo "$(YELLOW)Created: $(words $(OBJS)) object file(s) for so_long"
+	@echo "$(YELLOW)Created: $(NAME)$(RESET)"
 
 clean :
 	@make fclean -C $(LIBFT_DIR)
 	@make clean -C $(MLX_DIR)
 	@$(RM) $(OBJS) error.txt
 	@echo ""
-	@echo "${YELLOW}$$HEADER"
-	@echo "Removed: $(words $(OBJS)) object file(s) from so_long"
+	@echo "${RED}$$HEADER"
+	@echo "$(YELLOW)Removed: $(words $(OBJS)) object file(s) from so_long"
 
 fclean : clean
 	@$(RM) $(NAME)

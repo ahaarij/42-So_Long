@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 07:23:22 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:37 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/11 15:08:09 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ static char	*ft_error_message(t_map *map)
 	if (map->p > 1)
 		return ("ERROR: there is more than one element 'P'");
 	return ("ERROR: element missing in the map");
-	
 }
 
 void	scanplayer(t_map *map, t_game game)
@@ -84,7 +83,7 @@ static char	*unknown_element(t_game ***game, char c)
 	}
 	free((**game)->map);
 	printf("ERROR: are u dumb, this is NOT an element... : %c\n", c);
-	exit(1);
+	exit(0);
 }
 
 void	checkelement(t_game **game, t_map *map)
@@ -140,20 +139,15 @@ void	move_on_paths(int x, int y, t_map *map)
 
 void	check_valid_path(t_game *game, t_map map)
 {
-	printf("%d\n", map.c);
 	map.x = ft_strlen(*map.copy);
 	scanplayer(&map, *game);
-	printf("map x %d\n", map.map_x);
-	printf("map y %d\n", map.map_y);
 	map.c_check = map.c;
 	map.e_check = map.e;
 	move_on_paths(map.map_x, map.map_y, &map);
 	if(map.c_check != 0 || map.e_check >= map.e)
 	{
-		printf("map e check %d, map e %d\n", map.e_check, map.e);
-		printf("map c check %d, map c %d\n", map.c_check, map.c);
 		write(2, "\033[1;31m🛑ERROR: ", 19);
 		write(2, "NO VALID PATH\n\033[0m", 19);
-		exit(0);
+		ft_exit_free(&map, game);
 	}
 }

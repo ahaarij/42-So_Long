@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:27:37 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/11 12:55:07 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/12 10:30:05 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,66 +67,4 @@ void	get_map(t_map *map, t_game *game)
 	if (!game->map || !map->copy)
 		ft_exit_free(map, game);
 	free(map->file);
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-int	hi(t_game **game)
-{
-
-int	i;
-
-i = get_height((*game)->map) - 1;
-
-if((*game)->map[i][0] != 1 || (*game)->map[i][ft_strlen((*game)->map[i]) - 1] != 1)
-	ft_printf("map is not closed");
-	exit(0);
-i--;
-
-
 }

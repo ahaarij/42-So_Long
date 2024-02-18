@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 12:32:02 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/11 12:54:53 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/11 15:04:53 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,5 @@ void	checkmapvalid(t_game *game, t_map *map)
 	check_is_rectangle(&game);
 	check_walls(&game);
 	checkelement(&game, map);
-	printf("%d\n", map->c);
 	check_valid_path(game, *map);
 }
