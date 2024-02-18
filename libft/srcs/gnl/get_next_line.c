@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 17:02:03 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/05 15:36:17 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:30:34 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*string(char *s1)
 	if (s1[i] == '\0')
 		return (free(s1), NULL);
 	i = line_end(s1, i);
-	str = (char *)malloc(sizeof(char) * (ft_strlengnl(s1) - i + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strgnl(s1) - i + 1));
 	if (!str)
 		return (free(str), NULL);
 	while (s1[i])

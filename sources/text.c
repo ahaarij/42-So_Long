@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 12:38:21 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/08 22:03:48 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:24:29 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	put_text(t_game ***game)
 	mlx_put_image_to_window(
 		(**game)->mlx, (**game)->win, (**game)->img, 32 * 2, 0);
 	mlx_string_put((**game)->mlx, (**game)->win, 5, 10, 0xfffffff, text);
-	// printf("%s\n", number);
 	free(text);
 	free(number);
 }

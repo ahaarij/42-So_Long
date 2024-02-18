@@ -6,19 +6,19 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/05 12:07:48 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/15 20:01:13 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:19:33 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void    put_image(t_game ***game, int x, int y, char *path)
+void	put_image(t_game ***game, int x, int y, char *path)
 {
-    int img_w;
-    int img_h;
+	int	img_w;
+	int	img_h;
 
-    (**game)->img = mlx_xpm_file_to_image((**game)->mlx, path, &img_w, &img_h);
-    mlx_put_image_to_window((**game)->mlx, (**game)->win, (**game)->img, x, y);
+	(**game)->img = mlx_xpm_file_to_image((**game)->mlx, path, &img_w, &img_h);
+	mlx_put_image_to_window((**game)->mlx, (**game)->win, (**game)->img, x, y);
 }
 
 void	put_image_to_map(char p, int x1, int y1, t_game **game)

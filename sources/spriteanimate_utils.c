@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/15 18:39:53 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/17 18:14:57 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:20:04 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static int	check(t_game ***game, int x, int y)
 	return (0);
 }
 
-int get_za_enemy_position(t_game **game)
+int	get_za_enemy_position(t_game **game)
 {
-    int y;
-    int x;
-    int height;
+	int	y;
+	int	x;
+	int	height;
 
 	y = 0;
 	height = get_height((*game)->map);

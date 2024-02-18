@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 09:45:14 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/17 16:51:41 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:27:56 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 # include "../mlx-macos/mlx.h"
 # include "../libft/includes/libft.h"
-# include "sprites.h"
 # include <stdbool.h>
 
-typedef	struct	s_enemy {
+typedef struct s_enemy
+{
 	int		x_e;
 	int		y_e;
 	int		sign;
@@ -29,9 +29,10 @@ typedef	struct	s_enemy {
 	int		sleep;
 	int		sleep_for_move;
 	char	*imgs[5];
-}				t_enemy;
+}			t_enemy;
 
-typedef struct	s_game {
+typedef struct s_game
+{
 	void	*mlx;
 	void	*win;
 	void	*img;
@@ -43,9 +44,10 @@ typedef struct	s_game {
 	int		collect;
 	int		movement;
 	t_enemy	e_vars;
-}				t_game;
+}			t_game;
 
-typedef struct	s_map {
+typedef struct s_map
+{
 	int		width;
 	int		height;
 	char	*line;
@@ -61,7 +63,7 @@ typedef struct	s_map {
 	int		y;
 	int		map_x;
 	int		map_y;
-}				t_map;
+}			t_map;
 
 # define SPRITE_SIZE 512
 # define OFFSET_S	1
@@ -75,16 +77,16 @@ int				get_height(char **map);
 void			get_map(t_map *map, t_game *game);
 void			checkmapvalid(t_game *game, t_map *map);
 void			ft_error(t_game ***game, char *error);
-void    		put_image(t_game ***game, int x, int y, char *path);
+void			put_image(t_game ***game, int x, int y, char *path);
 void			put_image_to_map(char p, int x1, int y1, t_game **game);
 void			checkelement(t_game **game, t_map *map);
 void			check_walls(t_game **game);
-void    		to_right(t_game **game);
-void    		to_left(t_game **game);
+void			to_right(t_game **game);
+void			to_left(t_game **game);
 void			to_up(t_game **v);
 void			to_down(t_game **v);
 void			put_text(t_game ***game);
-void    		ft_exit(t_game ***game);
+void			ft_exit(t_game ***game);
 void			move_on_paths(int x, int y, t_map *map);
 void			check_valid_path(t_game *game, t_map map);
 char			*ft_strjoinfree(char *s1, char *s2);

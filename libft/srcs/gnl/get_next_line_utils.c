@@ -6,19 +6,20 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/15 09:10:32 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/05 17:14:56 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:30:23 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-size_t	ft_strlengnl(const char *s)
+size_t	ft_strgnl(const char *s)
 {
+	int	i;
+
 	if (!s)
 		return (0);
-	int	i;
 	i = 0;
-	while(s[i])
+	while (s[i])
 		i++;
 	return (i);
 }
@@ -45,7 +46,7 @@ char	*ft_strdupgnl(const char *src)
 	char			*dest;
 
 	i = 0;
-	j = ft_strlengnl(src);
+	j = ft_strgnl(src);
 	dest = (char *)malloc(sizeof(*dest) * (j + 1));
 	if (!dest)
 		return (NULL);
@@ -69,7 +70,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 	if (!s2)
 		return (ft_strdupgnl(s1));
 	i = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlengnl(s1) + ft_strlengnl(s2) + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strgnl(s1) + ft_strgnl(s2) + 1));
 	if (!str)
 		return (NULL);
 	while (s1 && s1[i])

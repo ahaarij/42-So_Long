@@ -1,6 +1,6 @@
 SRCS_DIR	= 	./sources
 
-SRCS_FILES	=	a.c \
+SRCS_FILES	=	main.c \
 				checkfile.c \
 				ft_getmap.c \
 				ft_checkmap.c \
@@ -11,6 +11,8 @@ SRCS_FILES	=	a.c \
 				exit.c	\
 				spriteanimate_utils.c \
 				spriteanimate.c \
+				ft_strjoinfree.c \
+				scanplayer.c \
 
 SRCS		= $(addprefix $(SRCS_DIR)/,$(SRCS_FILES))
 
@@ -37,7 +39,6 @@ NAME		= so_long
 RM			= rm -f
 GCC			= gcc
 CFLAGS 		= -Wall -Wextra -Werror
-# CFLAGS		+= -g3 -fsanitize=address
 
 HEADER_FILE	= $(HEAD)/so_long.h
 

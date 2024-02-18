@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 11:27:37 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/12 10:30:05 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/18 09:24:50 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	get_height(char **map)
 		i++;
 	return (i);
 }
+
 void	ft_exit_free(t_map *map, t_game *game)
 {
 	if (game->map)

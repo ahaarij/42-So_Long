@@ -6,7 +6,7 @@
 /*   By: ahaarij <ahaarij@student.42abudhabi.ae>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:31:17 by ahaarij           #+#    #+#             */
-/*   Updated: 2024/02/06 22:52:38 by ahaarij          ###   ########.fr       */
+/*   Updated: 2024/02/18 16:15:31 by ahaarij          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <ctype.h>
 # include <limits.h>
 # include <fcntl.h>
+# include <math.h>
 
 typedef struct s_list
 {
@@ -45,7 +46,7 @@ int		ft_isprint(int c);
 #  define BUFFER_SIZE 42
 # endif
 
-size_t	ft_strlengnl(const char *s);
+size_t	ft_strgnl(const char *s);
 char	*ft_strchrgnl(const char *s, int i);
 char	*ft_strdupgnl(const char *src);
 char	*ft_strjoin_gnl(char *s1, char *s2);
@@ -65,7 +66,6 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);
 int		ft_lstsize(t_list *lst);
 
-
 // MEM
 
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -76,16 +76,15 @@ void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
-
 // PRINTF
 
-int	ft_printchar(int c);
-int	ft_printhex(unsigned int n, int x);
-int	ft_printnbr(int number);
-int	ft_printstr(char *str);
-int	ft_printuint(unsigned int c);
-int	ft_printptr(void *ptr);
-int	ft_printf(const char *input, ...);
+int		ft_printchar(int c);
+int		ft_printhex(unsigned int n, int x);
+int		ft_printnbr(int number);
+int		ft_printstr(char *str);
+int		ft_printuint(unsigned int c);
+int		ft_printptr(void *ptr);
+int		ft_printf(const char *input, ...);
 
 // STRING
 
